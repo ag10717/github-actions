@@ -14,9 +14,9 @@ Document focussing some thoughts on the presentation that was given on Github Ac
 
 ---
 
-**Statement**: You should evaluate the new AND old platform in conjunction with each other against a pattern that you think will ultimately benefit others and improve the experience. If we take the focuses of commit, workflow/stage, branch as a collective and determine what is more important for us to see, then you can evaluate which platform is more fit for purpose.
+**Statement**: You should evaluate the new AND old platform in conjunction with each other against a pattern that you think will ultimately benefit others and improve the experience.
 
-**Rebutal**: *For example if when a developer opens either Github or Azure DevOps, the first thing they want to know is which version of an application is deployed in which environment, that should be the focus.*
+**Rebutal**: *If we take the focuses of commit, workflow/stage, branch as a collective and determine what is more important for us to see, then you can evaluate which platform is more fit for purpose. For example if when a developer opens either Github or Azure DevOps, the first thing they want to know is which version of an application is deployed in which environment, that should be the focus.*
 
 ---
 
