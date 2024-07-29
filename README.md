@@ -72,7 +72,7 @@ Document focussing some thoughts on the presentation that was given on Github Ac
 
 **Question**: In the concept of Github Actions: "What are Jobs?"
 
-**Answer**: *Jobs are a grouping of jobs to perform specific tasks; ie: setup npm -> download & install packages -> build application*
+**Answer**: *Jobs are a grouping of Actions to perform specific tasks; ie: setup npm -> download & install packages -> build application*
 
 ---
 
