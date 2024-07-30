@@ -128,13 +128,13 @@ As with the presentation given, these thoughts are mine, and selecting a pattern
 
 **Statement**: "Create a new workflow just for pull requests."
 
-**Response**: *This is fine for items that might need to be specifically maintained on **PR**, running the same thing for the `pull_request` trigger as you do on the `push` trigger, is redundant. It also means be default it runs on all default actions to a **PR** but will not run when a **PR** is completed.*
+**Response**: *This is fine for items that might need to be specifically maintained on **PR**, running the same thing for the `pull_request` trigger as you do on the `push` trigger, is redundant. It also means be default it only runs on `opened`, `synchronize`, and `reopened` actions to a **PR** but will not run when a **PR** is completed.*
 
 > NOTE: A **PR** trigger can run on the `closed` activity type, but I am unsure if this runs on "merged" closed **PR**s or just on **PR**s that are manually (or programitcally) closed.
 
 ---
 
-**Statement** "Separate workflows for manual deployments to lower environments."
+**Statement**: "Separate workflows for manual deployments to lower environments."
 
 **Response**: *See [Focussing on the Workflow](#focussing-on-the-workflow) for the expectation on how to handle this. Duplicating the workflow file is fine so that the separation exists within Github Actions and so that there is release control. But separating them with a parameter control for deploying to lower environments is redundant (assumption made on controlling the DEV or SIT state when running the `deploy-to-devsit` workflow).*
 
@@ -159,9 +159,9 @@ We can use the below table to loosely make some comparisons between Github Actio
 |Workflows       |Pipelines     |[Trigger Point](#trigger-point)   |
 |Jobs            |Stages        |[Collections](#collections) |
 |Steps           |Jobs          |[Groupings](#groupings) |
-|Action          |Job           |[Executing](#executing)       |
+|Action          |Job           |[Executions](#executions)       |
 
-> NOTE: The `reference name` will be used in the headings below to detail any information about either platform.
+> NOTE: The `Reference Name` will be used in the headings below to detail any information about either platform.
 
 ### Trigger Point
 
