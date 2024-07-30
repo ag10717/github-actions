@@ -4,6 +4,10 @@ Document focussing some thoughts on the presentation that was given on Github Ac
 
 > NOTE: Headers will break down the talking points in order as given as in the presentation.
 
+## Thoughts
+
+As with the presentation given, these thoughts are mine, and selecting a pattern that fits most of the applications we deploy should be thought of holistically instead of shoehorning the current configuration into another setup.
+
 ## Pipeline Focus
 
 **Timestamp: 16 minutes**
@@ -143,10 +147,6 @@ Document focussing some thoughts on the presentation that was given on Github Ac
 **Question**: "Can you share the workflows?"
 
 **Answer**: *Workflows defined at the "base" level are the same as a `pipeline.yaml` file and exist to define the methods for this particular repository. [Re-useable Workflows](https://docs.github.com/en/actions/using-workflows/reusing-workflows) can be shared between workflows. Actions should be re-used between any workflows.*
-
-## Thoughts
-
-As with the presentation given, these thoughts are mine, and selecting a pattern that fits most of the applications we deploy should be thought of holistically instead of shoehorning the current configuration into another setup.
 
 ## Comparisons
 
