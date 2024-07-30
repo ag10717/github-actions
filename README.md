@@ -14,19 +14,19 @@ As with the presentation given, these thoughts are mine, and selecting a pattern
 
 **Statement**: Taking a snap shot of a run from the trigger of a git action (push, pull request, tag, etc...) and comparing them between Azure DevOps and Github Actions makes the assumption that the previous state (Azure DevOps) was correct.
 
-**Rebutal**: *This should not be the way that you are determining that you are using a new "technology" correctly.*
+**Response**: *This should not be the way that you are determining that you are using a new "technology" correctly.*
 
 ---
 
 **Statement**: You should evaluate the new AND old platform in conjunction with each other against a pattern that you think will ultimately benefit others and improve the experience.
 
-**Rebutal**: *If we take the focuses of commit, workflow/stage, branch as a collective and determine what is more important for us to see, then you can evaluate which platform is more fit for purpose. For example if when a developer opens either Github or Azure DevOps, the first thing they want to know is which version of an application is deployed in which environment, that should be the focus.*
+**Response**: *If we take the focuses of commit, workflow/stage, branch as a collective and determine what is more important for us to see, then you can evaluate which platform is more fit for purpose. For example if when a developer opens either Github or Azure DevOps, the first thing they want to know is which version of an application is deployed in which environment, that should be the focus.*
 
 ---
 
 **Statement**: In the case of these CI/CD platforms, the whole screen needs to be evaluated for that case and whether a new pattern can accomodate that outcome.
 
-**Rebutal**: *A "workflow" is still present in Azure DevOps, it's just wrapped into a single line item (and more widely the current "pipeline"s page you are in) and it more prevently shows the stages within that at first glance. Github actions lists the worflows on the left hand navigation item instead.*
+**Response**: *A "workflow" is still present in Azure DevOps, it's just wrapped into a single line item (and more widely the current "pipeline"s page you are in) and it more prevently shows the stages within that at first glance. Github actions lists the worflows on the left hand navigation item instead.*
 
 ## Focussing on the Workflow
 
@@ -34,13 +34,13 @@ As with the presentation given, these thoughts are mine, and selecting a pattern
 
 **Statement**: "Why should we be focussing on the workflows listed in Github Actions?"
 
-**Rebutal**: *You should be focussing on the workflow because this should be the set of actions to perform your desired outcome. Your outcome, application being built, should be determining the view and in turn ensuring that workflows are presented with concise names; ie: **Build & Test***
+**Response**: *You should be focussing on the workflow because this should be the set of actions to perform your desired outcome. Your outcome, application being built, should be determining the view and in turn ensuring that workflows are presented with concise names; ie: **Build & Test***
 
 ---
 
 **Statement**: For example you should provide workflows that produce the outcome of "Build & Test" (these could potentially be split into their own workflows depending on any complex actions that might need to be performed and whether they can or should be performed independently of one another.)
 
-**Rebutal**: *You should present the clear outcomes for your development lifecycle and in most cases for our solutions it would likely be: **Build -> Test -> Deploy to N***
+**Response**: *You should present the clear outcomes for your development lifecycle and in most cases for our solutions it would likely be: **Build -> Test -> Deploy to N***
 
 *The **Branch**/**Tag**/**PR** then becomes the second determining factor for quick information because now you know most of the valuable information upfront*:
 
@@ -58,7 +58,7 @@ As with the presentation given, these thoughts are mine, and selecting a pattern
 
 **Statement**: "We don't care about the workflow name" (mainly when filtering workflows)
 
-**Rebutal**: *As with [Focussing on the Worflow](#focussing-on-the-workflow), the workflow name is the most important key because the default view when opening the "Actions" tab in Github is "All Workflows". We can then use the 2 items we know about from above, **Workflow Name** and **Triggering Source**, without having to go into each workflow separately.*
+**Response**: *As with [Focussing on the Worflow](#focussing-on-the-workflow), the workflow name is the most important key because the default view when opening the "Actions" tab in Github is "All Workflows". We can then use the 2 items we know about from above, **Workflow Name** and **Triggering Source**, without having to go into each workflow separately.*
 
 > NOTE: **Workflow Name** = `Build & Test` | `Deploy-To-DEV`; **Triggering Source** = `v1.0.0` | `main`
 
@@ -90,7 +90,7 @@ As with the presentation given, these thoughts are mine, and selecting a pattern
 
 **Statement**: "We have logic to check what branch made the trigger and how many attempts have been made on that trigger."
 
-**Rebutal**: *Yes. The branch check is also a control that exists in Azure DevOps and it is the controlling factor for NOT deploying changes to all environments (which we have defined as a "Stage" in that pipeline) on an approved **PR**.*
+**Response**: *Yes. The branch check is also a control that exists in Azure DevOps and it is the controlling factor for NOT deploying changes to all environments (which we have defined as a "Stage" in that pipeline) on an approved **PR**.*
 
 *It is important to note why the `run_attempt` condition exists, that is to mimic Azure DevOps "manual" release control (a user clicking retry). Github Actions does not have the concept of being able to manually request a **Job**, although they can be re-run.*
 
@@ -102,13 +102,13 @@ As with the presentation given, these thoughts are mine, and selecting a pattern
 
 **Statement**: Using the parameters that currently exist in Azure DevOps to determine the improved pattern when using Github Actions (see [Pipeline Focus](#pipeline-focus))
 
-**Rebutal**: *Parameters defined at the top of a pipeline file should be not be the sole determining factor of what outcome you want to achieve. The parameters exist as a way to pass user controlled settings like the idea behind "skipping tests". Environmental controls should either be done by approving workflows or manually being reqested by a user/developer.*
+**Response**: *Parameters defined at the top of a pipeline file should be not be the sole determining factor of what outcome you want to achieve. The parameters exist as a way to pass user controlled settings like the idea behind "skipping tests". Environmental controls should either be done by approving workflows or manually being reqested by a user/developer.*
 
 ---
 
 **Statement**: Taking the example from the video - "I want to do a `DEV - Quick Deploy`", this should be the first Red Flag that parameters are being used wrong.
 
-**Rebutal**: *If other approaches were made that always controlled the release to DEV and not all environments. Then all pushes to a Feature branch, for example, could trigger a release to DEV. If Github Actions was always the platform of choice going forward you can use the features it provides to make that possible; ie: `workflow_run` triggers - see [Events that Trigger Workflows](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#workflow_run)*
+**Response**: *If other approaches were made that always controlled the release to DEV and not all environments. Then all pushes to a Feature branch, for example, could trigger a release to DEV. If Github Actions was always the platform of choice going forward you can use the features it provides to make that possible; ie: `workflow_run` triggers - see [Events that Trigger Workflows](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#workflow_run)*
 
 > NOTE: *It's also worth noting that in Azure DevOps, not having something run to all "Stages" is controlled by the `environment` configuration housed outside of each defined pipeline.*
 
@@ -122,13 +122,13 @@ As with the presentation given, these thoughts are mine, and selecting a pattern
 
 **Statement**: "This (Build and Deploy for BFF) workflow only runs when you push to a branch."
 
-**Rebutal**: *The workflows have a `workflow_dispatch` trigger, this is the trigger that is used when a workflow is manually requested. They can be run on more than just push triggers.*
+**Response**: *The workflows have a `workflow_dispatch` trigger, this is the trigger that is used when a workflow is manually requested. They can be run on more than just push triggers.*
 
 ---
 
 **Statement**: "Create a new workflow just for pull requests."
 
-**Rebutal**: *This is fine for items that might need to be specifically maintained on **PR**, running the same thing for the `pull_request` trigger as you do on the `push` trigger, is redundant. It also means be default it runs on all default actions to a **PR** but will not run when a **PR** is completed.*
+**Response**: *This is fine for items that might need to be specifically maintained on **PR**, running the same thing for the `pull_request` trigger as you do on the `push` trigger, is redundant. It also means be default it runs on all default actions to a **PR** but will not run when a **PR** is completed.*
 
 > NOTE: A **PR** trigger can run on the `closed` activity type, but I am unsure if this runs on "merged" closed **PR**s or just on **PR**s that are manually (or programitcally) closed.
 
@@ -136,7 +136,7 @@ As with the presentation given, these thoughts are mine, and selecting a pattern
 
 **Statement** "Separate workflows for manual deployments to lower environments."
 
-**Rebutal**: *See [Focussing on the Workflow](#focussing-on-the-workflow) for the expectation on how to handle this. Duplicating the workflow file is fine so that the separation exists within Github Actions and so that there is release control. But separating them with a parameter control for deploying to lower environments is redundant (assumption made on controlling the DEV or SIT state when running the `deploy-to-devsit` workflow).*
+**Response**: *See [Focussing on the Workflow](#focussing-on-the-workflow) for the expectation on how to handle this. Duplicating the workflow file is fine so that the separation exists within Github Actions and so that there is release control. But separating them with a parameter control for deploying to lower environments is redundant (assumption made on controlling the DEV or SIT state when running the `deploy-to-devsit` workflow).*
 
 *In this proposed solution you have built the same package at least twice as part of the git flow and potentially AGAIN just for the sake of manually deploying a commit to a lower environment.*
 
